@@ -3,6 +3,19 @@ console.log('%c HI', 'color: firebrick')
 document.addEventListener('DOMContentLoaded', function () {
       fetchImages()
       fetchBreeds()
+      document.getElementById('breed-dropdown').addEventListener('change', function (event) {
+            const letter = event.target.value
+            const ul = document.getElementById('dog-breeds')
+            const lis = ul.querySelectorAll('li')
+            lis.forEach(li => {
+                  if (li.innerText.startsWith(letter)) {
+                        li.style.display = ''
+                  } else {
+                        li.style.display = 'none'
+                  }
+            })
+      })
+
 })
 
 function fetchImages() {
@@ -40,6 +53,7 @@ function renderBreeds(json) {
             })
       }
 }
+
 
 // Language: javascript
 
